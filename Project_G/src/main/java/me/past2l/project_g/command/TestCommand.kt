@@ -3,7 +3,6 @@ package me.past2l.minefarm.command
 import me.past2l.api.PluginManager
 import me.past2l.api.gui.GUI
 import me.past2l.api.util.Item
-import me.past2l.minefarm.MineFarm
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.command.Command
@@ -94,7 +93,7 @@ class TestCommand: CommandExecutor, TabExecutor {
                     stand!!.setGravity(false)
                     stand!!.helmet = sender.inventory.itemInMainHand
                     cosmetic_id = Bukkit.getScheduler().runTaskTimer(
-                        JavaPlugin.getPlugin(MineFarm::class.java),
+                        PluginManager.plugin,
                         {
                             sender.setPassenger(stand!!)
                             stand!!.teleport(sender.location.add(

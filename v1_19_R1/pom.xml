@@ -62,14 +62,6 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>me.past2l</groupId>
-            <artifactId>api</artifactId>
-            <version>api</version>
-            <type>jar</type>
-            <scope>compile</scope>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib-jdk8</artifactId>
             <version>${kotlin.version}</version>
