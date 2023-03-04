@@ -1,11 +1,11 @@
-package me.past2l.minefarm.entity
+package me.past2l.project_g.entity
 
 import me.past2l.api.entity.NPC
-import me.past2l.minefarm.gui.CustomGUI
+import me.past2l.project_g.gui.CustomGUI
 import me.past2l.api.type.entity.NPCData
 import me.past2l.api.type.interact.Interaction
 import me.past2l.api.type.skin.SkinResult
-import me.past2l.minefarm.util.Config
+import me.past2l.project_g.util.Config
 import me.past2l.api.util.File
 import me.past2l.api.util.Yaml
 import org.bukkit.Bukkit

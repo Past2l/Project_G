@@ -1,6 +1,6 @@
-package me.past2l.minefarm.command
+package me.past2l.project_g.command
 
-import me.past2l.minefarm.gui.AdminGUI
+import me.past2l.project_g.gui.AdminGUI
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender

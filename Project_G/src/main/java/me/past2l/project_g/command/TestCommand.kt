@@ -1,4 +1,4 @@
-package me.past2l.minefarm.command
+package me.past2l.project_g.command
 
 import me.past2l.api.PluginManager
 import me.past2l.api.gui.GUI

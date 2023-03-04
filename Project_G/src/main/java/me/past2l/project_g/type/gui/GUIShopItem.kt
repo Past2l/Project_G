@@ -1,4 +1,4 @@
-package me.past2l.minefarm.type.gui
+package me.past2l.project_g.type.gui
 
 data class GUIShopItem(
     var price: Double? = null,

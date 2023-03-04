@@ -1,4 +1,4 @@
-package me.past2l.minefarm.type.config.text
+package me.past2l.project_g.type.config.text
 
 data class ConfigTextShop(
     val item: String = "%shop.item.name% 아이템 &6%shop.item.amount%&r개를 " +

@@ -1,17 +1,17 @@
-package me.past2l.minefarm.util
+package me.past2l.project_g.util
 
 import me.past2l.api.type.config.ConfigEnable
 import me.past2l.api.type.config.ConfigMOTD
 import me.past2l.api.type.config.ConfigScoreboard
 import me.past2l.api.type.config.ConfigTabList
 import me.past2l.api.type.entity.NPCData
-import me.past2l.minefarm.type.gui.GUIShopItem
-import me.past2l.minefarm.type.shop.ShopInteraction
+import me.past2l.project_g.type.gui.GUIShopItem
+import me.past2l.project_g.type.shop.ShopInteraction
 import me.past2l.api.util.Config
-import me.past2l.minefarm.type.config.ConfigData
+import me.past2l.project_g.type.config.ConfigData
 import me.past2l.api.type.config.ConfigMoney
-import me.past2l.minefarm.type.config.text.ConfigText
-import me.past2l.minefarm.type.config.text.ConfigTextShop
+import me.past2l.project_g.type.config.text.ConfigText
+import me.past2l.project_g.type.config.text.ConfigTextShop
 import org.bukkit.entity.Player
 import java.text.DecimalFormat
 

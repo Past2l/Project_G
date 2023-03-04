@@ -1,7 +1,7 @@
-package me.past2l.minefarm
+package me.past2l.project_g
 
 import me.past2l.api.PluginManager
-import me.past2l.minefarm.entity.CustomNPC
+import me.past2l.project_g.entity.CustomNPC
 import me.past2l.api.entity.NPC
 import me.past2l.api.entity.Player
 import me.past2l.api.event.*
@@ -11,9 +11,9 @@ import me.past2l.api.nms.NMS
 import me.past2l.api.packet.Packet
 import me.past2l.api.scheduler.NPCSkinReloadScheduler
 import me.past2l.api.scheduler.GUILoadScheduler
-import me.past2l.minefarm.command.*
-import me.past2l.minefarm.util.Config
-import me.past2l.minefarm.gui.CustomGUI
+import me.past2l.project_g.command.*
+import me.past2l.project_g.util.Config
+import me.past2l.project_g.gui.CustomGUI
 import org.bukkit.Bukkit
 import org.bukkit.Difficulty
 import org.bukkit.plugin.java.JavaPlugin
