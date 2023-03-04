@@ -30,8 +30,10 @@ class Player {
         fun loadData(player: org.bukkit.entity.Player): PlayerData {
             val data = Yaml.read("player/${player.uniqueId}.yml")
             val lastPlayed = data?.get("lastPlayed")?.toString()
-            val default = PlayerData()
+            val default = PlayerData(player.name, player.uniqueId)
             return PlayerData(
+                nickname = default.nickname,
+                uuid = default.uuid,
                 prefix = data?.get("prefix")?.toString() ?: default.prefix,
                 money = data?.get("money")?.toString()?.toDouble() ?: default.money,
                 cash = data?.get("cash")?.toString()?.toDouble() ?: default.cash,
@@ -46,6 +48,8 @@ class Player {
         fun saveData(player: org.bukkit.entity.Player) {
             val saveData = data[player.uniqueId] ?: return
             val hashMap = hashMapOf(
+                "nickname" to player.name,
+                "uuid" to player.uniqueId,
                 "prefix" to if (!saveData.prefix.endsWith("&r") && saveData.prefix.isNotEmpty())
                     saveData.prefix + "&r" else saveData.prefix,
                 "money" to saveData.money,
