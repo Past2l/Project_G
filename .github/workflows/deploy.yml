@@ -71,4 +71,4 @@ jobs:
           path: staging
       - name: Check Jar File
         run: |
-          ls -
+          ls -al
