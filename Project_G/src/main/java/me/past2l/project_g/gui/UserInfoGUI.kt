@@ -17,12 +17,12 @@ class UserInfoGUI {
             gui.setItem(
                 11,
                 Item.playerHead(target)
-                    .setName("§6${target.name}§r의 정보")
+                    .setName("§6${target.name}§f의 정보")
                     .setLore(
                         listOf(
-                            "이름 : &6${target.name}&r",
-                            "칭호 : &6%player.prefix.exist%&r",
-                            "호감도 : &d♥ %player.like%&r"
+                            "&r&f이름 : &6${target.name}&r",
+                            "&r&f칭호 : &6%player.prefix.exist%&r",
+                            "&r&f호감도 : &d♥ %player.like%&r"
                         ).map {
                             Config.format(it, player = target)
                         } as MutableList
@@ -45,6 +45,7 @@ class UserInfoGUI {
                     data[target.uniqueId]!!.like += value
                     data[player.uniqueId]!!.likeEnable = ZonedDateTime.now(ZoneId.of(Config.timezone)).plusHours(1)
                     me.past2l.api.entity.Player.onChangeData(target)
+                    me.past2l.api.entity.Player.onChangeData(player)
                     target.sendMessage("§${if (value == 1) "a" else "c"}" +
                         "${player.name}§r님께서 호감도를 ${if (value == 1) "올" else "내"}려주었습니다. " +
                     "§7(현재 호감도 : ${DecimalFormat("#,###").format(data[target.uniqueId]!!.like)})")
