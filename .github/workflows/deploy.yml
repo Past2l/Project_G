@@ -69,3 +69,6 @@ jobs:
         with: 
           name: github-actions-artifact
           path: staging
+      - name: Check Jar File
+        run: |
+          ls -
