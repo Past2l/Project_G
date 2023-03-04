@@ -29,6 +29,7 @@ class Player {
 
         fun loadData(player: org.bukkit.entity.Player): PlayerData {
             val data = Yaml.read("player/${player.uniqueId}.yml")
+            val likeEnable = data?.get("likeEnable")?.toString()
             val lastPlayed = data?.get("lastPlayed")?.toString()
             val default = PlayerData(player.name, player.uniqueId)
             return PlayerData(
@@ -38,6 +39,9 @@ class Player {
                 money = data?.get("money")?.toString()?.toDouble() ?: default.money,
                 cash = data?.get("cash")?.toString()?.toDouble() ?: default.cash,
                 like = data?.get("like")?.toString()?.toDouble() ?: default.like,
+                likeEnable = if (likeEnable != null)
+                    ZonedDateTime.parse(likeEnable)
+                else default.likeEnable,
                 playtime = data?.get("playtime")?.toString()?.toDouble() ?: default.playtime,
                 lastPlayed = if (lastPlayed != null)
                     ZonedDateTime.parse(lastPlayed)
@@ -55,6 +59,7 @@ class Player {
                 "money" to saveData.money,
                 "cash" to saveData.cash,
                 "like" to saveData.like,
+                "likeEnable" to saveData.likeEnable.toString(),
                 "playtime" to saveData.playtime,
                 "lastPlayed" to saveData.lastPlayed.toString(),
             )

@@ -12,6 +12,7 @@ import me.past2l.api.packet.Packet
 import me.past2l.api.scheduler.NPCSkinReloadScheduler
 import me.past2l.api.scheduler.GUILoadScheduler
 import me.past2l.project_g.command.*
+import me.past2l.project_g.event.UserInfoEvent
 import me.past2l.project_g.util.Config
 import me.past2l.project_g.gui.CustomGUI
 import org.bukkit.Bukkit
@@ -33,6 +34,7 @@ class ProjectG: JavaPlugin() {
         PlayerEvent(),
         PacketEvent(),
         MOTDEvent(),
+        UserInfoEvent(),
     )
     private val gameRules = hashMapOf(
         "difficulty" to "normal",
