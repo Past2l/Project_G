@@ -12,16 +12,25 @@ import java.time.ZonedDateTime
 class UserInfoGUI {
     companion object {
         fun functionList(player: Player, target: Player) {
-            val gui = GUI(target.displayName, 5)
+            val gui = GUI(target.displayName, 3)
             val data = me.past2l.api.entity.Player.data
             gui.setItem(
-                20,
-                Item(Material.BARRIER, 1)
-                    .setName("§c개발중...§r")
+                11,
+                Item.playerHead(target)
+                    .setName("§6${target.name}§r의 정보")
+                    .setLore(
+                        listOf(
+                            "이름 : &6${target.name}&r",
+                            "칭호 : &6%player.prefix.exist%&r",
+                            "호감도 : &d♥ %player.like%&r"
+                        ).map {
+                            Config.format(it, player = target)
+                        } as MutableList
+                    )
                     .item
             )
             gui.setItem(
-                24,
+                15,
                 Item(Material.NETHER_STAR, 1)
                     .setName("§d§l호감도§r")
                     .setLore(arrayListOf(
