@@ -52,7 +52,7 @@ jobs:
       - name: Have GitHub Actions Build Maven Project
         run: |
           mvn -B package --file pom.xml
-          mkdir staging && cp Project_G/target/*.jar staging
+          mkdir staging && cp Project_G/target/Project_G*.jar staging
 
       - name: Persist workflow data as artificats
         uses: actions/upload-artifact@v2
@@ -69,6 +69,9 @@ jobs:
         with: 
           name: github-actions-artifact
           path: staging
-      - name: Check Jar File
+      - name: Move Jar File
         run: |
-          ls -al
+          mv ./staging/Project_G*.jar ~/genshin_impact/plugins
+      - name: Remove Staging File
+        run: |
+          rm -rf ./staging
