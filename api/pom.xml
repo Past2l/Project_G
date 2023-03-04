@@ -63,6 +63,13 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- API Type -->
+        <dependency>
+            <groupId>me.past2l</groupId>
+            <artifactId>type</artifactId>
+            <version>type</version>
+        </dependency>
+
         <!-- Versions -->
         <dependency>
             <groupId>me.past2l</groupId>

@@ -116,6 +116,11 @@
             <artifactId>api</artifactId>
             <version>api</version>
         </dependency>
+        <dependency>
+            <groupId>me.past2l</groupId>
+            <artifactId>type</artifactId>
+            <version>type</version>
+        </dependency>
 
         <!-- Versions -->
         <dependency>

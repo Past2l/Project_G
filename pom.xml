@@ -15,7 +15,9 @@
     </properties>
 
     <modules>
+
         <!-- Plugin API -->
+        <module>type</module>
         <module>api</module>
 
         <!-- Plugin Versions -->

@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.past2l</groupId>
-    <artifactId>v1_12_R1</artifactId>
-    <version>v1_12_R1</version>
+    <artifactId>type</artifactId>
+    <version>type</version>
     <packaging>jar</packaging>
 
-    <name>Minecraft Plugin v1_12_R1</name>
+    <name>Past2l's Plugin API Type</name>
 
     <properties>
         <java.version>17</java.version>
@@ -55,17 +55,22 @@
     </build>
 
     <dependencies>
+        <!-- Plugin Base Version -->
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot</artifactId>
             <version>1.12.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- Other Dependencies -->
         <dependency>
-            <groupId>me.past2l</groupId>
-            <artifactId>type</artifactId>
-            <version>type</version>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20220320</version>
         </dependency>
+
+        <!-- Kotlin -->
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib-jdk8</artifactId>
