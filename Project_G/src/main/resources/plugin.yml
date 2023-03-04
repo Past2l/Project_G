@@ -1,0 +1,55 @@
+name: MineFarm
+version: '${project.version}'
+main: me.past2l.project_g.ProjectG
+authors: [ Green0121, Past2l ]
+description: Custom Plugin for Project G
+website: https://github.com/past2l
+
+commands:
+  test:
+    description: Command for Test plugin.
+    permission: projectg.test
+  npc:
+    description: Command for NPC plugin.
+    permission: projectg.npc
+  gui:
+    description: Command for GUI plugin.
+    permission: projectg.gui
+  ender_chest:
+    description: Command for Open Ender Chest.
+    permission: projectg.ender_chest
+  admin:
+    description: Command for Admin GUI.
+    permission: projectg.admin
+  player:
+    description: Command for Manage Player.
+    permission: projectg.player
+
+permissions:
+  projectg.*:
+    description: Gives access to all Project G Commands
+    children:
+      projectg.test: true
+      projectg.npc: true
+      projectg.gui: true
+      projectg.ender_chest: true
+      projectg.admin: true
+      projectg.player: true
+  projectg.test:
+    description: Give access to use Project G Test Command
+    default: op
+  projectg.npc:
+    description: Give access to use Project G NPC Command
+    default: op
+  projectg.gui:
+    description: Give access to use Project G GUI Command
+    default: op
+  projectg.ender_chest:
+    description: Give access to use Project G Chest Command
+    default: op
+  projectg.admin:
+    description: Give access to use Project G Admin Command
+    default: op
+  projectg.player:
+    description: Give access to use Project G Player Command
+    default: op

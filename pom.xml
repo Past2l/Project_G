@@ -1,0 +1,40 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>me.past2l</groupId>
+    <artifactId>Minecraft_Plugin</artifactId>
+    <packaging>pom</packaging>
+    <version>parent</version>
+    <name>Minecraft_Plugin</name>
+
+    <properties>
+        <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <modules>
+        <!-- Plugin API -->
+        <module>api</module>
+
+        <!-- Plugin Versions -->
+        <module>v1_12_R1</module>
+        <module>v1_19_R1</module>
+
+        <!-- Project_G -->
+        <module>Project_G</module>
+    </modules>
+
+    <!-- Define the repo here since multiple modules will be using it -->
+    <repositories>
+        <repository>
+            <id>spigotmc-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+        </repository>
+        <repository>
+            <id>sonatype</id>
+            <url>https://oss.sonatype.org/content/groups/public/</url>
+        </repository>
+    </repositories>
+</project>
