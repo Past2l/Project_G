@@ -1,7 +1,7 @@
-name: MineFarm
+name: ProjectG
 version: '${project.version}'
 main: me.past2l.project_g.ProjectG
-authors: [ Green0121, Past2l ]
+authors: [ Green0121, Past2l, WhiteKr ]
 description: Custom Plugin for Project G
 website: https://github.com/past2l
 
