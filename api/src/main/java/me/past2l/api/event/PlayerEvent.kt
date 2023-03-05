@@ -9,6 +9,7 @@ import me.past2l.api.util.Logger
 import me.past2l.api.util.Web
 import org.bukkit.Bukkit
 import org.bukkit.event.EventHandler
+import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.player.AsyncPlayerChatEvent
 import org.bukkit.event.player.PlayerJoinEvent
@@ -24,7 +25,7 @@ class PlayerEvent: Listener {
         if (Config.resourcePack.isNotEmpty()) {
             val checksum = Web.getFileChecksum(Config.resourcePack)
             if (checksum != null)
-                event.player.setResourcePack(Config.resourcePack, checksum)
+                event.player.setResourcePack(Config.resourcePack)
         }
 
         val data = Player.loadData(event.player)
