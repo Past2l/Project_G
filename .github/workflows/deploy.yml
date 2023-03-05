@@ -57,10 +57,10 @@ jobs:
       - name: Upload Artificats
         uses: wangyucode/sftp-upload-action@v2.0.2
         with:
-          host: ${{secrets.server_url}}
-          username: ${{secrets.ssh_user}}
-          privateKey: ${{secrets.ssh_secret}}
-          forceUpdate: true
+          host: ${{ secrets.server_url }}
+          username: ${{ secrets.ssh_user }}
+          privateKey: ${{ secrets.ssh_secret }}
+          forceUpload: true
           port: 22
           localDir: 'plugin'
           remoteDir: '~/genshin_impact/plugins/'
