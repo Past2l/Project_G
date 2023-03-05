@@ -9,7 +9,6 @@ import org.bukkit.BanList
 import org.bukkit.Bukkit
 import java.time.ZonedDateTime
 import java.util.*
-import kotlin.collections.HashMap
 
 class Player {
     companion object {
@@ -45,7 +44,8 @@ class Player {
                 playtime = data?.get("playtime")?.toString()?.toDouble() ?: default.playtime,
                 lastPlayed = if (lastPlayed != null)
                     ZonedDateTime.parse(lastPlayed)
-                else default.lastPlayed
+                else default.lastPlayed,
+                stamina = default.stamina,
             )
         }
 
@@ -68,12 +68,12 @@ class Player {
         }
 
         fun loadData() {
-            for(player in Bukkit.getServer().onlinePlayers)
+            for (player in Bukkit.getServer().onlinePlayers)
                 data[player.uniqueId] = loadData(player)
         }
 
         fun saveData() {
-            for(player in Bukkit.getServer().onlinePlayers) saveData(player)
+            for (player in Bukkit.getServer().onlinePlayers) saveData(player)
         }
     }
 }

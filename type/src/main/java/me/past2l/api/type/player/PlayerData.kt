@@ -13,5 +13,6 @@ data class PlayerData(
     var like: Double = 0.0,
     var likeEnable: ZonedDateTime = ZonedDateTime.now(ZoneId.of("Asia/Seoul")),
     var playtime: Double = 0.0,
-    var lastPlayed: ZonedDateTime = ZonedDateTime.now(ZoneId.of("Asia/Seoul"))
+    var lastPlayed: ZonedDateTime = ZonedDateTime.now(ZoneId.of("Asia/Seoul")),
+    var stamina: Int = 240,
 )
