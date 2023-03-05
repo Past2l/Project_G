@@ -26,7 +26,7 @@ class PlayerEvent: Listener {
                 if (checksum != null)
                     event.player.setResourcePack(Config.resourcePack, checksum)
             } },
-            20
+            80
         )
 
         val data = Player.loadData(event.player)
