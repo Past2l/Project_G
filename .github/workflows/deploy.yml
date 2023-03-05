@@ -59,7 +59,8 @@ jobs:
         with:
           server: ${{secrets.server_url}}
           username: ${{secrets.ssh_user}}
-          key: ${{secrets.ssh_key}}
+          key: ${{secrets.ssh_secret}}
+          passphrase: ''
           port: 22
           uploads: |
             ./staging/ => ~/genshin_impact/plugins/
