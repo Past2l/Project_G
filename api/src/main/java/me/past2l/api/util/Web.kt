@@ -28,7 +28,7 @@ class Web {
             return try {
                 val steam = URL(url).openStream()
                 val buffer = ByteArray(1024)
-                val complete = MessageDigest.getInstance("SHA1")
+                val complete = MessageDigest.getInstance("MD5")
                 var numRead: Int
                 do {
                     numRead = steam.read(buffer)

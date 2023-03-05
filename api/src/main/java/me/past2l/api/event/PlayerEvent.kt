@@ -13,33 +13,18 @@ import org.bukkit.event.Listener
 import org.bukkit.event.player.AsyncPlayerChatEvent
 import org.bukkit.event.player.PlayerJoinEvent
 import org.bukkit.event.player.PlayerQuitEvent
-import java.io.FileInputStream
-import java.io.InputStream
-import java.security.MessageDigest
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
 
 class PlayerEvent: Listener {
-    fun checksum(byte: ByteArray): String {
-        var result = ""
-        for (i in byte.indices) {
-            result += ((byte[i].toInt() and 0xff) + 0x100).toString(16).substring(1)
-        }
-        return result
-    }
-
     @EventHandler
     fun onJoin(event: PlayerJoinEvent) {
         // Set Resource Pack
         if (Config.resourcePack.isNotEmpty()) {
             val checksum = Web.getFileChecksum(Config.resourcePack)
-            if (checksum != null) {
-                Logger.log(Config.resourcePack)
-                Logger.log(checksum(checksum))
-                Logger.log(checksum(Web.getFileChecksum(Config.resourcePack)!!))
+            if (checksum != null)
                 event.player.setResourcePack(Config.resourcePack, checksum)
-            }
         }
 
         val data = Player.loadData(event.player)
