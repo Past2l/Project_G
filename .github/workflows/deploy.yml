@@ -52,15 +52,15 @@ jobs:
       - name: Have GitHub Actions Build Maven Project
         run: |
           mvn -B package --file pom.xml
-          mkdir staging && cp Project_G/target/Project_G*.jar staging
+          mkdir plugin && cp Project_G/target/Project_G*.jar plugin
 
       - name: Upload Artificats
-        uses: Dylan700/sftp-upload-action@latest
+        uses: wangyucode/sftp-upload-action@v2.0.2
         with:
-          server: ${{secrets.server_url}}
+          host: ${{secrets.server_url}}
           username: ${{secrets.ssh_user}}
-          key: ${{secrets.ssh_secret}}
-          passphrase: ''
+          privateKey: ${{secrets.ssh_secret}}
+          forceUpdate: true
           port: 22
-          uploads: |
-            ./staging/ => ~/genshin_impact/plugins/
+          localDir: 'plugin'
+          remoteDir: '~/genshin_impact/plugins/'
