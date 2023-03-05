@@ -13,21 +13,29 @@ class StaminaScheduler {
                 PluginManager.plugin,
                 {
                     Bukkit.getOnlinePlayers().forEach {
+                        val maxStamina = 240
+
                         if (it.isSprinting || it.isFlying || it.location.block.isLiquid) {
                             if (Player.data[it.uniqueId]?.stamina!! > 0)
                                 Player.data[it.uniqueId]?.stamina = Player.data[it.uniqueId]?.stamina!! - 1
                         } else if (it.isSneaking) {
-                            if (Player.data[it.uniqueId]?.stamina!! < 240)
+                            if (Player.data[it.uniqueId]?.stamina!! < maxStamina)
                                 Player.data[it.uniqueId]?.stamina = Player.data[it.uniqueId]?.stamina!! + 2
                         } else if (it.velocity.length() == 0.0) {
-                            if (Player.data[it.uniqueId]?.stamina!! < 240)
+                            if (Player.data[it.uniqueId]?.stamina!! < maxStamina)
                                 Player.data[it.uniqueId]?.stamina = Player.data[it.uniqueId]?.stamina!! + 3
                         } else {
-                            if (Player.data[it.uniqueId]?.stamina!! < 240)
+                            if (Player.data[it.uniqueId]?.stamina!! < maxStamina)
                                 Player.data[it.uniqueId]?.stamina = Player.data[it.uniqueId]?.stamina!! + 1
                         }
 
-//                        if (Player.data[it.uniqueId]?.stamina!! == 240) return@forEach
+                        if (Player.data[it.uniqueId]?.stamina!! >= maxStamina) {
+                            it.spigot().sendMessage(
+                                net.md_5.bungee.api.ChatMessageType.ACTION_BAR,
+                                net.md_5.bungee.api.chat.TextComponent("")
+                            )
+                            return@forEach
+                        }
 
                         val color: String = when (Player.data[it.uniqueId]?.stamina) {
                             in 0..59 -> "§c"
@@ -38,7 +46,7 @@ class StaminaScheduler {
                         }
                         it.spigot().sendMessage(
                             net.md_5.bungee.api.ChatMessageType.ACTION_BAR,
-                            net.md_5.bungee.api.chat.TextComponent("${color}체력: ${Player.data[it.uniqueId]?.stamina} / 240")
+                            net.md_5.bungee.api.chat.TextComponent("${color}체력: ${Player.data[it.uniqueId]?.stamina} / $maxStamina")
                         )
                     }
                 },
