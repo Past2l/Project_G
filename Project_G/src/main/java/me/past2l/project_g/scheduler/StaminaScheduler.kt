@@ -4,7 +4,7 @@ import me.past2l.project_g.PluginManager
 import me.past2l.project_g.entity.Player
 import org.bukkit.Bukkit
 
-class ViewStaminaScheduler {
+class StaminaScheduler {
     companion object {
         private var id: Int? = null
 
@@ -13,6 +13,22 @@ class ViewStaminaScheduler {
                 PluginManager.plugin,
                 {
                     Bukkit.getOnlinePlayers().forEach {
+                        if (it.isSprinting || it.isFlying || it.location.block.isLiquid) {
+                            if (Player.data[it.uniqueId]?.stamina!! > 0)
+                                Player.data[it.uniqueId]?.stamina = Player.data[it.uniqueId]?.stamina!! - 1
+                        } else if (it.isSneaking) {
+                            if (Player.data[it.uniqueId]?.stamina!! < 240)
+                                Player.data[it.uniqueId]?.stamina = Player.data[it.uniqueId]?.stamina!! + 2
+                        } else if (it.velocity.length() == 0.0) {
+                            if (Player.data[it.uniqueId]?.stamina!! < 240)
+                                Player.data[it.uniqueId]?.stamina = Player.data[it.uniqueId]?.stamina!! + 3
+                        } else {
+                            if (Player.data[it.uniqueId]?.stamina!! < 240)
+                                Player.data[it.uniqueId]?.stamina = Player.data[it.uniqueId]?.stamina!! + 1
+                        }
+
+//                        if (Player.data[it.uniqueId]?.stamina!! == 240) return@forEach
+
                         val color: String = when (Player.data[it.uniqueId]?.stamina) {
                             in 0..59 -> "§c"
                             in 60..119 -> "§e"

@@ -9,7 +9,7 @@ import me.past2l.project_g.nms.NMS
 import me.past2l.project_g.packet.Packet
 import me.past2l.project_g.scheduler.GUILoadScheduler
 import me.past2l.project_g.scheduler.NPCSkinReloadScheduler
-import me.past2l.project_g.scheduler.ViewStaminaScheduler
+import me.past2l.project_g.scheduler.StaminaScheduler
 import me.past2l.project_g.command.*
 import me.past2l.project_g.config.Config
 import me.past2l.project_g.entity.CustomNPC
@@ -111,13 +111,13 @@ class ProjectG : JavaPlugin() {
     private fun initSchedulers() {
         GUILoadScheduler.init()
         NPCSkinReloadScheduler.init()
-        ViewStaminaScheduler.init()
+        StaminaScheduler.init()
     }
 
     private fun removeSchedulers() {
         GUILoadScheduler.remove()
         NPCSkinReloadScheduler.remove()
-        ViewStaminaScheduler.remove()
+        StaminaScheduler.remove()
     }
 
     private fun initNPCs() {
