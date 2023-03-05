@@ -19,7 +19,10 @@ class StaminaScheduler {
                         else if (Player.data[it.uniqueId]?.stamina!! > maxStamina)
                             Player.data[it.uniqueId]?.stamina = maxStamina
 
-                        if (it.isSprinting || it.isFlying || it.location.block.isLiquid) {
+                        if (it.location.block.isLiquid) {
+                            if (it.velocity.length() != 0.0)
+                                Player.data[it.uniqueId]?.stamina = Player.data[it.uniqueId]?.stamina!! - 1
+                        } else if (it.isSprinting || it.isFlying) {
                             if (Player.data[it.uniqueId]?.stamina!! > 0)
                                 Player.data[it.uniqueId]?.stamina = Player.data[it.uniqueId]?.stamina!! - 1
                         } else if (it.isSneaking) {
