@@ -52,7 +52,6 @@ jobs:
       - name: Have GitHub Actions Build Maven Project
         run: |
           mvn -B package --file pom.xml
-          mkdir plugin && cp Project_G/target/Project_G*.jar plugin
 
       - name: Upload Artificats
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
@@ -61,5 +60,5 @@ jobs:
           username: ${{ secrets.ssh_user }}
           ssh_private_key: ${{ secrets.ssh_secret }}
           port: 22
-          local_path: './plugin'
+          local_path: './Project_G/target/Project_G*.jar'
           remote_path: 'genshin_impact/plugins/'
