@@ -1,10 +1,10 @@
 package me.past2l.api.event
 
 import me.past2l.api.PluginManager
+import me.past2l.api.config.Config
 import me.past2l.api.entity.Player
 import me.past2l.api.gui.Scoreboard
 import me.past2l.api.gui.TabList
-import me.past2l.api.config.Config
 import me.past2l.api.util.Logger
 import me.past2l.api.util.Web
 import org.bukkit.Bukkit
@@ -13,10 +13,22 @@ import org.bukkit.event.Listener
 import org.bukkit.event.player.AsyncPlayerChatEvent
 import org.bukkit.event.player.PlayerJoinEvent
 import org.bukkit.event.player.PlayerQuitEvent
+import java.io.FileInputStream
+import java.io.InputStream
+import java.security.MessageDigest
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
+
 class PlayerEvent: Listener {
+    fun checksum(byte: ByteArray): String {
+        var result = ""
+        for (i in byte.indices) {
+            result += ((byte[i].toInt() and 0xff) + 0x100).toString(16).substring(1)
+        }
+        return result
+    }
+
     @EventHandler
     fun onJoin(event: PlayerJoinEvent) {
         // Set Resource Pack
@@ -24,8 +36,8 @@ class PlayerEvent: Listener {
             val checksum = Web.getFileChecksum(Config.resourcePack)
             if (checksum != null) {
                 Logger.log(Config.resourcePack)
-                Logger.log(checksum.toString())
-                Logger.log(Web.getFileChecksum(Config.resourcePack)!!.toString())
+                Logger.log(checksum(checksum))
+                Logger.log(checksum(Web.getFileChecksum(Config.resourcePack)!!))
                 event.player.setResourcePack(Config.resourcePack, checksum)
             }
         }
