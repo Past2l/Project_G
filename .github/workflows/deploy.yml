@@ -62,4 +62,4 @@ jobs:
           ssh_private_key: ${{ secrets.ssh_secret }}
           port: 22
           local_path: './plugin'
-          remote_path: '~/genshin_impact/plugins/'
+          remote_path: 'genshin_impact/plugins/'
