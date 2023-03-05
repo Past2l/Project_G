@@ -14,6 +14,10 @@ class StaminaScheduler {
                 {
                     Bukkit.getOnlinePlayers().forEach {
                         val maxStamina = 240
+                        if (Player.data[it.uniqueId]?.stamina!! < 0)
+                            Player.data[it.uniqueId]?.stamina = 0
+                        else if (Player.data[it.uniqueId]?.stamina!! > maxStamina)
+                            Player.data[it.uniqueId]?.stamina = maxStamina
 
                         if (it.isSprinting || it.isFlying || it.location.block.isLiquid) {
                             if (Player.data[it.uniqueId]?.stamina!! > 0)
