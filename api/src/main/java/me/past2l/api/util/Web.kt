@@ -36,7 +36,7 @@ class Web {
                 } while (numRead != -1)
                 steam.close()
                 complete.digest()
-            } catch (e: Error) {
+            } catch (e: FileNotFoundException) {
                 null
             }
         }
