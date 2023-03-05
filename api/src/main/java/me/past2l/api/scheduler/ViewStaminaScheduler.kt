@@ -14,11 +14,11 @@ class ViewStaminaScheduler {
                 {
                     Bukkit.getOnlinePlayers().forEach {
                         val color: String = when (Player.data[it.uniqueId]?.stamina) {
-                            in 0..59 -> "&c"
-                            in 60..119 -> "&e"
-                            in 120..179 -> "&a"
-                            in 180..239 -> "&b"
-                            else -> "&d"
+                            in 0..59 -> "§c"
+                            in 60..119 -> "§e"
+                            in 120..179 -> "§a"
+                            in 180..239 -> "§b"
+                            else -> "§d"
                         }
                         it.spigot().sendMessage(
                             net.md_5.bungee.api.ChatMessageType.ACTION_BAR,
