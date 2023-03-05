@@ -1,4 +1,4 @@
-package me.past2l.project_g.util
+package me.past2l.project_g.config
 
 import me.past2l.api.type.config.ConfigEnable
 import me.past2l.api.type.config.ConfigMOTD
@@ -7,7 +7,7 @@ import me.past2l.api.type.config.ConfigTabList
 import me.past2l.api.type.entity.NPCData
 import me.past2l.project_g.type.gui.GUIShopItem
 import me.past2l.project_g.type.shop.ShopInteraction
-import me.past2l.api.util.Config
+import me.past2l.api.config.Config
 import me.past2l.project_g.type.config.ConfigData
 import me.past2l.api.type.config.ConfigMoney
 import me.past2l.project_g.type.config.text.ConfigText
@@ -22,6 +22,7 @@ class Config: Config() {
 
         lateinit var serverName: String
         lateinit var timezone: String
+        lateinit var resourcePack: String
         lateinit var consolePrefix: String
         lateinit var chat: String
         lateinit var enable: ConfigEnable
@@ -56,6 +57,7 @@ class Config: Config() {
 
             this.serverName = API.config.serverName
             this.timezone = API.config.timezone
+            this.resourcePack = API.config.resourcePack
             this.consolePrefix = API.config.consolePrefix
             this.chat = API.config.chat
             this.enable = API.config.enable

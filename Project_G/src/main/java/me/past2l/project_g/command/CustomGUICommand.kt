@@ -7,7 +7,7 @@ import me.past2l.project_g.type.gui.GUIGachaItem
 import me.past2l.project_g.type.gui.GUIItem
 import me.past2l.project_g.type.gui.GUIShopItem
 import me.past2l.api.type.interact.Interaction
-import me.past2l.api.util.Config
+import me.past2l.project_g.config.Config
 import me.past2l.api.util.Item
 import net.md_5.bungee.api.ChatColor
 import net.md_5.bungee.api.chat.ClickEvent
@@ -388,7 +388,8 @@ class CustomGUICommand: CommandExecutor, TabExecutor {
                                             (if (args[5] == "true") "활성화" else "비활성화") +
                                             "§r로 설정되었습니다."
                                     )
-                                    "moneyType" -> sender.sendMessage(Config.format(
+                                    "moneyType" -> sender.sendMessage(
+                                        Config.format(
                                         "§a${args[1]}§r GUI의 " +
                                             (if (args[3] == "all") "§6모든§r" else "§6${args[3].toInt() + 1}§r번째") +
                                             " 아이템의 화폐가 §6" +

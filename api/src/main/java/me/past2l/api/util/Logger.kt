@@ -1,5 +1,6 @@
 package me.past2l.api.util
 
+import me.past2l.api.config.Config
 import org.bukkit.Bukkit
 
 class Logger {

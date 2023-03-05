@@ -1,6 +1,6 @@
 package me.past2l.api.event
 
-import me.past2l.api.util.Config
+import me.past2l.api.config.Config
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.server.ServerListPingEvent

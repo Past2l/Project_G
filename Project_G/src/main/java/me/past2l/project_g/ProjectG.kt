@@ -13,7 +13,7 @@ import me.past2l.api.scheduler.NPCSkinReloadScheduler
 import me.past2l.api.scheduler.GUILoadScheduler
 import me.past2l.project_g.command.*
 import me.past2l.project_g.event.UserInfoEvent
-import me.past2l.project_g.util.Config
+import me.past2l.project_g.config.Config
 import me.past2l.project_g.gui.CustomGUI
 import org.bukkit.Bukkit
 import org.bukkit.Difficulty

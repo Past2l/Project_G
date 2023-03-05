@@ -2,7 +2,7 @@ package me.past2l.project_g.gui
 
 import me.past2l.api.gui.GUI
 import me.past2l.api.util.Item
-import me.past2l.project_g.util.Config
+import me.past2l.project_g.config.Config
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import java.text.DecimalFormat

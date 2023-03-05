@@ -5,7 +5,7 @@ import me.past2l.project_g.gui.CustomGUI
 import me.past2l.api.type.entity.NPCData
 import me.past2l.api.type.interact.Interaction
 import me.past2l.api.type.skin.SkinResult
-import me.past2l.project_g.util.Config
+import me.past2l.project_g.config.Config
 import me.past2l.api.util.File
 import me.past2l.api.util.Yaml
 import org.bukkit.Bukkit

@@ -1,9 +1,8 @@
 package me.past2l.api.gui
 
-import me.past2l.api.util.Config
+import me.past2l.api.config.Config
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
-import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.scoreboard.DisplaySlot
 
 class Scoreboard {

@@ -4,7 +4,8 @@ import me.past2l.api.PluginManager
 import me.past2l.api.entity.Player
 import me.past2l.api.gui.Scoreboard
 import me.past2l.api.gui.TabList
-import me.past2l.api.util.Config
+import me.past2l.api.config.Config
+import me.past2l.api.util.Web
 import org.bukkit.Bukkit
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -17,6 +18,13 @@ import java.time.ZonedDateTime
 class PlayerEvent: Listener {
     @EventHandler
     fun onJoin(event: PlayerJoinEvent) {
+        // Set Resource Pack
+        if (Config.resourcePack.isNotEmpty()) {
+            val checksum = Web.getFileChecksum(Config.resourcePack)
+            if (checksum != null)
+                event.player.setResourcePack(Config.resourcePack, checksum)
+        }
+
         val data = Player.loadData(event.player)
         data.lastPlayed = ZonedDateTime.now(ZoneId.of(Config.timezone))
         Player.data[event.player.uniqueId] = data

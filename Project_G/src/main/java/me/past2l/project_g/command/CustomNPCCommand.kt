@@ -3,7 +3,7 @@ package me.past2l.project_g.command
 import me.past2l.project_g.entity.CustomNPC
 import me.past2l.api.type.entity.NPCData
 import me.past2l.api.type.interact.Interaction
-import me.past2l.api.util.Config
+import me.past2l.project_g.config.Config
 import me.past2l.api.util.Logger
 import me.past2l.api.util.Skin
 import me.past2l.project_g.gui.CustomGUI
