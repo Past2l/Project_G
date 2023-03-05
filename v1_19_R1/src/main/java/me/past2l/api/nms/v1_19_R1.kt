@@ -5,8 +5,8 @@ import com.mojang.authlib.properties.Property
 import io.netty.channel.Channel
 import io.netty.channel.ChannelHandlerContext
 import io.netty.handler.codec.MessageToMessageDecoder
-import me.past2l.api.type.nms.NMS
-import me.past2l.api.type.entity.FakePlayer
+import me.past2l.project_g.type.nms.NMS
+import me.past2l.project_g.type.entity.FakePlayer
 import net.minecraft.network.chat.IChatBaseComponent.ChatSerializer
 import net.minecraft.network.protocol.Packet
 import net.minecraft.network.protocol.game.*

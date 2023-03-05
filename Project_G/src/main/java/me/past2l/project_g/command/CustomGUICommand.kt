@@ -1,14 +1,14 @@
 package me.past2l.project_g.command
 
 import me.past2l.project_g.gui.CustomGUI
-import me.past2l.api.gui.GUI
+import me.past2l.project_g.gui.GUI
 import me.past2l.project_g.type.gui.GUIData
 import me.past2l.project_g.type.gui.GUIGachaItem
 import me.past2l.project_g.type.gui.GUIItem
 import me.past2l.project_g.type.gui.GUIShopItem
-import me.past2l.api.type.interact.Interaction
+import me.past2l.project_g.type.interact.Interaction
 import me.past2l.project_g.config.Config
-import me.past2l.api.util.Item
+import me.past2l.project_g.util.Item
 import net.md_5.bungee.api.ChatColor
 import net.md_5.bungee.api.chat.ClickEvent
 import net.md_5.bungee.api.chat.ComponentBuilder

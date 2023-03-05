@@ -4,8 +4,8 @@ import com.mojang.authlib.GameProfile
 import com.mojang.authlib.properties.Property
 import io.netty.channel.ChannelDuplexHandler
 import io.netty.channel.ChannelHandlerContext
-import me.past2l.api.type.nms.NMS
-import me.past2l.api.type.entity.FakePlayer
+import me.past2l.project_g.type.nms.NMS
+import me.past2l.project_g.type.entity.FakePlayer
 import net.minecraft.server.v1_12_R1.*
 import net.minecraft.server.v1_12_R1.IChatBaseComponent.ChatSerializer
 import org.bukkit.Bukkit

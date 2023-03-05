@@ -1,6 +1,6 @@
 package me.past2l.project_g.type.gui
 
-import me.past2l.api.type.interact.Interaction
+import me.past2l.project_g.type.interact.Interaction
 
 data class GUIItem (
     var item: String,

@@ -1,15 +1,14 @@
 package me.past2l.project_g.gui
 
-import me.past2l.api.gui.GUI
 import me.past2l.project_g.type.gui.GUIData
 import me.past2l.project_g.type.gui.GUIGachaItem
 import me.past2l.project_g.type.gui.GUIItem
 import me.past2l.project_g.type.gui.GUIShopItem
-import me.past2l.api.type.interact.Interaction
+import me.past2l.project_g.type.interact.Interaction
 import me.past2l.project_g.type.shop.ShopInteraction
-import me.past2l.api.util.File
-import me.past2l.api.util.Item
-import me.past2l.api.util.Yaml
+import me.past2l.project_g.util.File
+import me.past2l.project_g.util.Item
+import me.past2l.project_g.util.Yaml
 import me.past2l.project_g.config.Config
 import org.bukkit.entity.Player
 
@@ -35,7 +34,7 @@ class CustomGUI {
                 title = data.name,
                 lines = data.line,
                 closeEvent = { event, _ ->
-                    me.past2l.api.entity.Player.saveData(event.player as Player)
+                    me.past2l.project_g.entity.Player.saveData(event.player as Player)
                 }
             )
             when (data.type) {
@@ -204,7 +203,7 @@ class CustomGUI {
                     var mode = 0
                     if (event.click.isRightClick) mode++
                     if (event.click.isShiftClick) mode += 2
-                    val playerData = me.past2l.api.entity.Player.data[event.whoClicked.uniqueId]!!
+                    val playerData = me.past2l.project_g.entity.Player.data[event.whoClicked.uniqueId]!!
                     if (mode % 2 == 0) { // Right Click (Buy)
                         if (it.shop?.price == null) return@setItem
                         val amount = if (mode / 2 == 0) 1 else 10 // Check is Shift Click
@@ -222,7 +221,7 @@ class CustomGUI {
                                 playerData.money -= (it.shop?.price ?: 0.0) * amount
                             if (it.shop?.moneyType == "cash" && playerData.cash != -1.0)
                                 playerData.cash -= (it.shop?.price ?: 0.0) * amount
-                            me.past2l.api.entity.Player.onChangeData(event.whoClicked as Player)
+                            me.past2l.project_g.entity.Player.onChangeData(event.whoClicked as Player)
                             Item.giveItemAmount(event.whoClicked as Player, Item.deserialize(it.item).item, amount)
                             event.whoClicked.sendMessage(Config.format(
                                 Config.text.shop.item,
@@ -245,7 +244,7 @@ class CustomGUI {
                                 playerData.money += (it.shop?.sellPrice ?: 0.0) * amount
                             if (it.shop?.moneyType == "cash" && playerData.cash != -1.0)
                                 playerData.cash += (it.shop?.sellPrice ?: 0.0) * amount
-                            me.past2l.api.entity.Player.onChangeData(event.whoClicked as Player)
+                            me.past2l.project_g.entity.Player.onChangeData(event.whoClicked as Player)
                             Item.removeItemAmount(event.whoClicked as Player, Item.deserialize(it.item).item, amount)
                             event.whoClicked.sendMessage(Config.format(
                                 Config.text.shop.item,

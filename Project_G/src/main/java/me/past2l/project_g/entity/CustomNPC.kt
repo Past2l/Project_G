@@ -1,13 +1,12 @@
 package me.past2l.project_g.entity
 
-import me.past2l.api.entity.NPC
 import me.past2l.project_g.gui.CustomGUI
-import me.past2l.api.type.entity.NPCData
-import me.past2l.api.type.interact.Interaction
-import me.past2l.api.type.skin.SkinResult
+import me.past2l.project_g.type.entity.NPCData
+import me.past2l.project_g.type.interact.Interaction
+import me.past2l.project_g.type.skin.SkinResult
 import me.past2l.project_g.config.Config
-import me.past2l.api.util.File
-import me.past2l.api.util.Yaml
+import me.past2l.project_g.util.File
+import me.past2l.project_g.util.Yaml
 import org.bukkit.Bukkit
 import org.bukkit.Location
 import org.bukkit.entity.Player

@@ -110,12 +110,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- API -->
-        <dependency>
-            <groupId>me.past2l</groupId>
-            <artifactId>api</artifactId>
-            <version>api</version>
-        </dependency>
+        <!-- Type -->
         <dependency>
             <groupId>me.past2l</groupId>
             <artifactId>type</artifactId>

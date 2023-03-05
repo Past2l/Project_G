@@ -1,7 +1,6 @@
 package me.past2l.project_g.gui
 
-import me.past2l.api.gui.GUI
-import me.past2l.api.util.Item
+import me.past2l.project_g.util.Item
 import me.past2l.project_g.config.Config
 import org.bukkit.Material
 import org.bukkit.entity.Player
@@ -13,7 +12,7 @@ class UserInfoGUI {
     companion object {
         fun functionList(player: Player, target: Player) {
             val gui = GUI(target.displayName, 3)
-            val data = me.past2l.api.entity.Player.data
+            val data = me.past2l.project_g.entity.Player.data
             gui.setItem(
                 11,
                 Item.playerHead(target)
@@ -44,8 +43,8 @@ class UserInfoGUI {
                     val value = if (it.isLeftClick) 1 else -1
                     data[target.uniqueId]!!.like += value
                     data[player.uniqueId]!!.likeEnable = ZonedDateTime.now(ZoneId.of(Config.timezone)).plusHours(1)
-                    me.past2l.api.entity.Player.onChangeData(target)
-                    me.past2l.api.entity.Player.onChangeData(player)
+                    me.past2l.project_g.entity.Player.onChangeData(target)
+                    me.past2l.project_g.entity.Player.onChangeData(player)
                     target.sendMessage("§${if (value == 1) "a" else "c"}" +
                         "${player.name}§r님께서 호감도를 ${if (value == 1) "올" else "내"}려주었습니다. " +
                     "§7(현재 호감도 : ${DecimalFormat("#,###").format(data[target.uniqueId]!!.like)})")

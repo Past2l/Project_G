@@ -1,6 +1,6 @@
 package me.past2l.project_g.command
 
-import me.past2l.api.gui.TabList
+import me.past2l.project_g.gui.TabList
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
@@ -50,8 +50,8 @@ class PlayerCommand: CommandExecutor, TabExecutor {
                 if (!Bukkit.getOnlinePlayers().contains(player) || player == null)
                     sender.sendMessage("§c온라인 상태인 플레이어에게서만 칭호를 변경할 수 있습니다.§r")
                 else {
-                    me.past2l.api.entity.Player.data[player.uniqueId]?.prefix = prefix
-                    me.past2l.api.entity.Player.onChangeData(player)
+                    me.past2l.project_g.entity.Player.data[player.uniqueId]?.prefix = prefix
+                    me.past2l.project_g.entity.Player.onChangeData(player)
                     TabList.setHeaderFooter()
                     if (prefix.isNotEmpty())
                         sender.sendMessage((if (sender.uniqueId != player.uniqueId) "§a$nickname§r님" else "자신") +
@@ -72,8 +72,8 @@ class PlayerCommand: CommandExecutor, TabExecutor {
                 sender.sendMessage("§c정수를 입력해주세요.§r")
             else {
                 val player = Bukkit.getPlayer(args[1])!!
-                me.past2l.api.entity.Player.data[player.uniqueId]?.like = args[2].toDouble()
-                me.past2l.api.entity.Player.onChangeData(player)
+                me.past2l.project_g.entity.Player.data[player.uniqueId]?.like = args[2].toDouble()
+                me.past2l.project_g.entity.Player.onChangeData(player)
                 sender.sendMessage((if (sender.uniqueId != player.uniqueId) "§a${args[1]}§r님" else "자신") +
                     "의 호감도를 §d${args[2]}§r로 변경하였습니다.")
             }

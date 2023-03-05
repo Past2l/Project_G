@@ -1,6 +1,5 @@
 package me.past2l.project_g.gui
 
-import me.past2l.api.gui.GUI
 import org.bukkit.entity.Player
 
 class EnderChestGUI {

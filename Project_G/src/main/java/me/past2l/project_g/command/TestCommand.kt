@@ -1,8 +1,8 @@
 package me.past2l.project_g.command
 
-import me.past2l.api.PluginManager
-import me.past2l.api.gui.GUI
-import me.past2l.api.util.Item
+import me.past2l.project_g.PluginManager
+import me.past2l.project_g.gui.GUI
+import me.past2l.project_g.util.Item
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.command.Command
@@ -12,7 +12,6 @@ import org.bukkit.command.TabExecutor
 import org.bukkit.entity.ArmorStand
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Player
-import org.bukkit.plugin.java.JavaPlugin
 
 class TestCommand: CommandExecutor, TabExecutor {
     companion object {

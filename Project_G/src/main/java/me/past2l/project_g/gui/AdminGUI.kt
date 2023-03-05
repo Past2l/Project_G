@@ -1,8 +1,7 @@
 package me.past2l.project_g.gui
 
-import me.past2l.api.PluginManager
-import me.past2l.api.gui.GUI
-import me.past2l.api.util.Item
+import me.past2l.project_g.PluginManager
+import me.past2l.project_g.util.Item
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.entity.Player
@@ -95,7 +94,7 @@ class AdminGUI {
             ) {
                 if (!target.isOp) {
                     gui.close(player)
-                    me.past2l.api.entity.Player.banPlayer(target)
+                    me.past2l.project_g.entity.Player.banPlayer(target)
                     player.sendMessage("You banned §a${target.name}§r.")
                 } else
                     player.sendMessage("§cYou can't ban ${target.name} because ${target.name} is OP.")
