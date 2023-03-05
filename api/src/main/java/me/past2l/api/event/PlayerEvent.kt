@@ -19,11 +19,15 @@ class PlayerEvent: Listener {
     @EventHandler
     fun onJoin(event: PlayerJoinEvent) {
         // Set Resource Pack
-        if (Config.resourcePack.isNotEmpty()) {
-            val checksum = Web.getFileChecksum(Config.resourcePack)
-            if (checksum != null)
-                event.player.setResourcePack(Config.resourcePack, checksum)
-        }
+        Bukkit.getScheduler().runTaskLater(
+            PluginManager.plugin,
+            { if (Config.resourcePack.isNotEmpty()) {
+                val checksum = Web.getFileChecksum(Config.resourcePack)
+                if (checksum != null)
+                    event.player.setResourcePack(Config.resourcePack, checksum)
+            } },
+            20
+        )
 
         val data = Player.loadData(event.player)
         data.lastPlayed = ZonedDateTime.now(ZoneId.of(Config.timezone))
