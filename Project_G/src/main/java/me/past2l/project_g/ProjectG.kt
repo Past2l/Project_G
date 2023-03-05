@@ -1,7 +1,6 @@
 package me.past2l.project_g
 
 import me.past2l.api.PluginManager
-import me.past2l.project_g.entity.CustomNPC
 import me.past2l.api.entity.NPC
 import me.past2l.api.entity.Player
 import me.past2l.api.event.*
@@ -9,17 +8,19 @@ import me.past2l.api.gui.Scoreboard
 import me.past2l.api.gui.TabList
 import me.past2l.api.nms.NMS
 import me.past2l.api.packet.Packet
-import me.past2l.api.scheduler.NPCSkinReloadScheduler
 import me.past2l.api.scheduler.GUILoadScheduler
+import me.past2l.api.scheduler.NPCSkinReloadScheduler
+import me.past2l.api.scheduler.ViewStaminaScheduler
 import me.past2l.project_g.command.*
-import me.past2l.project_g.event.UserInfoEvent
 import me.past2l.project_g.config.Config
+import me.past2l.project_g.entity.CustomNPC
+import me.past2l.project_g.event.UserInfoEvent
 import me.past2l.project_g.gui.CustomGUI
 import org.bukkit.Bukkit
 import org.bukkit.Difficulty
 import org.bukkit.plugin.java.JavaPlugin
 
-class ProjectG: JavaPlugin() {
+class ProjectG : JavaPlugin() {
     private val commands = hashMapOf(
         TestCommand.name to TestCommand(),
         CustomNPCCommand.name to CustomNPCCommand(),
@@ -112,11 +113,13 @@ class ProjectG: JavaPlugin() {
     private fun initSchedulers() {
         GUILoadScheduler.init()
         NPCSkinReloadScheduler.init()
+        ViewStaminaScheduler.init()
     }
 
     private fun removeSchedulers() {
         GUILoadScheduler.remove()
         NPCSkinReloadScheduler.remove()
+        ViewStaminaScheduler.remove()
     }
 
     private fun initNPCs() {
