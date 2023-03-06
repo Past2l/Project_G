@@ -1,7 +1,5 @@
 package me.past2l.project_g.type.config
 
-import me.past2l.project_g.type.config.text.ConfigText
-
 data class ConfigData(
     val serverName: String = "Test Server",
     val timezone: String = "Asia/Seoul",
@@ -13,5 +11,4 @@ data class ConfigData(
     val scoreboard: ConfigScoreboard = ConfigScoreboard(),
     val motd: ConfigMOTD = ConfigMOTD(),
     val money: ConfigMoney = ConfigMoney(),
-    val text: ConfigText = ConfigText(),
 )

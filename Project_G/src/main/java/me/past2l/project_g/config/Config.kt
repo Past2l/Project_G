@@ -7,8 +7,6 @@ import me.past2l.project_g.type.config.ConfigTabList
 import me.past2l.project_g.type.entity.NPCData
 import me.past2l.project_g.type.config.ConfigMoney
 import me.past2l.project_g.util.Yaml
-import me.past2l.project_g.type.config.text.ConfigText
-import me.past2l.project_g.type.config.text.ConfigTextShop
 import me.past2l.project_g.type.config.ConfigData
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
@@ -40,8 +38,6 @@ class Config {
             val scoreboard = data?.get("scoreboard") as HashMap<*, *>?
             val motd = data?.get("motd") as HashMap<*, *>?
             val money = data?.get("money") as HashMap<*, *>?
-            val text = data?.get("text") as HashMap<*, *>?
-            val shopText = text?.get("shop") as HashMap<*, *>?
             val default = ConfigData()
 
             forceReplace = data?.get("forceReplace")?.toString()?.toBoolean() ?: false
@@ -74,19 +70,6 @@ class Config {
                 money = ConfigMoney(
                     money = money?.get("money")?.toString() ?: default.money.money,
                     cash = money?.get("cash")?.toString() ?: default.money.cash,
-                ),
-                text = ConfigText(
-                    shop = ConfigTextShop(
-                        item = shopText?.get("item")?.toString() ?: default.text.shop.item,
-                        buyItemPrice = shopText?.get("buyItemPrice")?.toString() ?: default.text.shop.buyItemPrice,
-                        buyItemLore = shopText?.get("buyItemLore")?.toString() ?: default.text.shop.buyItemLore,
-                        buyAllItemLore = shopText?.get("buyAllItemLore")?.toString()
-                            ?: default.text.shop.buyAllItemLore,
-                        sellItemPrice = shopText?.get("sellItemPrice")?.toString() ?: default.text.shop.sellItemPrice,
-                        sellItemLore = shopText?.get("sellItemLore")?.toString() ?: default.text.shop.sellItemLore,
-                        sellAllItemLore = shopText?.get("sellAllItemLore")?.toString()
-                            ?: default.text.shop.sellAllItemLore,
-                    ),
                 ),
             )
 
@@ -129,17 +112,6 @@ class Config {
                 "money" to hashMapOf(
                     "money" to config.money.money,
                     "cash" to config.money.cash,
-                ),
-                "text" to hashMapOf(
-                    "shop" to hashMapOf(
-                        "item" to config.text.shop.item,
-                        "buyItemPrice" to config.text.shop.buyItemPrice,
-                        "buyItemLore" to config.text.shop.buyItemLore,
-                        "buyAllItemLore" to config.text.shop.buyAllItemLore,
-                        "sellItemPrice" to config.text.shop.sellItemPrice,
-                        "sellItemLore" to config.text.shop.sellItemLore,
-                        "sellAllItemLore" to config.text.shop.sellAllItemLore,
-                    ),
                 ),
             )
             if (forceReplace) data["forceReplace"] = true

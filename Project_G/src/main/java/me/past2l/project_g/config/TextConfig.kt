@@ -42,13 +42,13 @@ class TextConfig {
         fun save() {
             val data = hashMapOf<String, Any>(
                 "shop" to hashMapOf(
-                    "item" to Config.config.text.shop.item,
-                    "buyItemPrice" to Config.config.text.shop.buyItemPrice,
-                    "buyItemLore" to Config.config.text.shop.buyItemLore,
-                    "buyAllItemLore" to Config.config.text.shop.buyAllItemLore,
-                    "sellItemPrice" to Config.config.text.shop.sellItemPrice,
-                    "sellItemLore" to Config.config.text.shop.sellItemLore,
-                    "sellAllItemLore" to Config.config.text.shop.sellAllItemLore,
+                    "item" to config.shop.item,
+                    "buyItemPrice" to config.shop.buyItemPrice,
+                    "buyItemLore" to config.shop.buyItemLore,
+                    "buyAllItemLore" to config.shop.buyAllItemLore,
+                    "sellItemPrice" to config.shop.sellItemPrice,
+                    "sellItemLore" to config.shop.sellItemLore,
+                    "sellAllItemLore" to config.shop.sellAllItemLore,
                 ),
             )
             if (forceReplace) data["forceReplace"] = true
