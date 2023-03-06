@@ -5,8 +5,6 @@ import me.past2l.project_g.type.config.ConfigMOTD
 import me.past2l.project_g.type.config.ConfigScoreboard
 import me.past2l.project_g.type.config.ConfigTabList
 import me.past2l.project_g.type.entity.NPCData
-import me.past2l.project_g.type.gui.GUIShopItem
-import me.past2l.project_g.type.shop.ShopInteraction
 import me.past2l.project_g.type.config.ConfigMoney
 import me.past2l.project_g.util.Yaml
 import me.past2l.project_g.type.config.text.ConfigText
@@ -34,9 +32,8 @@ class Config {
         lateinit var tabList: ConfigTabList
         lateinit var scoreboard: ConfigScoreboard
         lateinit var motd: ConfigMOTD
-        lateinit var text: ConfigText
 
-        fun init(option: ((HashMap<String, *>?) -> Unit)? = null) {
+        fun init() {
             val data = Yaml.read("config.yml")
             val enable = data?.get("enable") as HashMap<*, *>?
             val tabList = data?.get("tabList") as HashMap<*, *>?
@@ -102,7 +99,6 @@ class Config {
             this.tabList = config.tabList
             this.scoreboard = config.scoreboard
             this.motd = config.motd
-            this.text = config.text
         }
 
         fun save() {
@@ -154,9 +150,7 @@ class Config {
             str: String?,
             player: Player? = null,
             npc: NPCData? = null,
-            shopItem: GUIShopItem? = null,
-            shopInteraction: ShopInteraction? = null,
-            trim: Boolean? = true,
+            trim: Boolean = true,
         ): String {
             var result = str ?: return ""
             val temp = UUID.randomUUID().toString()
@@ -184,68 +178,6 @@ class Config {
                     .replace("%npc.uuid%", npc.uuid.toString())
                     .replace("%npc.name%", npc.name)
             }
-            if (shopItem != null) {
-                result = result.replace("%shop.item.moneyType%", shopItem.moneyType)
-                    .replace(
-                        "%shop.item.buyPrice%",
-                        DecimalFormat("#,###").format(shopItem.price ?: 0.0)
-                    )
-                    .replace(
-                        "%shop.item.previousBuyPrice%",
-                        DecimalFormat("#,###").format(shopItem.previousPrice ?: 0.0)
-                    )
-                    .replace(
-                        "%shop.item.sellPrice%",
-                        DecimalFormat("#,###").format(shopItem.sellPrice ?: 0.0)
-                    )
-                    .replace(
-                        "%shop.item.previousSellPrice%",
-                        DecimalFormat("#,###").format(shopItem.previousSellPrice ?: 0.0)
-                    )
-                    .replace(
-                        "%shop.item.gap.buyPrice%",
-                        if (!shopItem.priceChange) ""
-                        else {
-                            val gap = (shopItem.price ?: 0.0) - (shopItem.previousPrice ?: shopItem.price ?: 0.0)
-                            if (gap < 1 && gap > -1) "(-)"
-                            else if (gap > 0)
-                                "&r&f(&c▲${DecimalFormat("#,###").format(gap)}&f)"
-                            else
-                                "&r&f(&9▼${DecimalFormat("#,###").format(-gap)}&f)"
-                        }
-                    )
-                    .replace(
-                        "%shop.item.gap.sellPrice%",
-                        if (!shopItem.priceChange) ""
-                        else {
-                            val gap = (shopItem.sellPrice ?: 0.0) - (shopItem.previousSellPrice ?: shopItem.sellPrice ?: 0.0)
-                            if (gap < 1 && gap > -1) "(-)"
-                            else if (gap > 0)
-                                "(&c▲${DecimalFormat("#,###").format(gap)}&f)"
-                            else
-                                "(&9▼${DecimalFormat("#,###").format(-gap)}&f)"
-                        }
-                    )
-                if (shopInteraction != null) {
-                    result = result.replace(
-                        "%shop.item.name%",
-                        if (shopInteraction.name.isNotEmpty()) shopInteraction.name + "&r"
-                        else ""
-                    )
-                        .replace("%shop.item.type%", shopInteraction.type)
-                        .replace("%shop.item.amount%", shopInteraction.amount.toString())
-                        .replace(
-                            "%shop.item.price%",
-                            DecimalFormat("#,###").format(
-                                when (shopInteraction.type) {
-                                    "구매" -> (shopItem.price ?: 0.0) * shopInteraction.amount
-                                    "판매" -> (shopItem.sellPrice ?: 0.0) * shopInteraction.amount
-                                    else -> ""
-                                }
-                            )
-                        )
-                }
-            }
             result = result
                 .replace("\\&", temp)
                 .replace("&", "§")
@@ -259,7 +191,7 @@ class Config {
                 .replace("%date.minute%", now.format(DateTimeFormatter.ofPattern("mm")))
                 .replace("%server.money%", config.money.money)
                 .replace("%server.cash%", config.money.cash)
-            return if (trim == true) result.trim() else result
+            return if (trim) result.trim() else result
         }
     }
 }

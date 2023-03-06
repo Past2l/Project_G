@@ -10,6 +10,7 @@ import me.past2l.project_g.util.File
 import me.past2l.project_g.util.Item
 import me.past2l.project_g.util.Yaml
 import me.past2l.project_g.config.Config
+import me.past2l.project_g.config.TextConfig
 import org.bukkit.entity.Player
 
 class CustomGUI {
@@ -185,18 +186,18 @@ class CustomGUI {
                 if ((it.shop?.price != null || it.shop?.sellPrice != null) && lore.size > 0)
                     lore.add("")
                 if (it.shop?.price != null)
-                    lore.add(Config.format(Config.text.shop.buyItemPrice, shopItem = it.shop))
+                    lore.add(TextConfig.format(TextConfig.shop.buyItemPrice, shopItem = it.shop))
                 if (it.shop?.sellPrice != null)
-                    lore.add(Config.format(Config.text.shop.sellItemPrice, shopItem = it.shop))
+                    lore.add(TextConfig.format(TextConfig.shop.sellItemPrice, shopItem = it.shop))
                 if (it.shop?.price != null || it.shop?.sellPrice != null)
                     lore.add("")
                 if (it.shop?.price != null) {
-                    lore.add(Config.format(Config.text.shop.buyItemLore))
-                    lore.add(Config.format(Config.text.shop.buyAllItemLore))
+                    lore.add(Config.format(TextConfig.shop.buyItemLore))
+                    lore.add(Config.format(TextConfig.shop.buyAllItemLore))
                 }
                 if (it.shop?.sellPrice != null) {
-                    lore.add(Config.format(Config.text.shop.sellItemLore))
-                    lore.add(Config.format(Config.text.shop.sellAllItemLore))
+                    lore.add(Config.format(TextConfig.shop.sellItemLore))
+                    lore.add(Config.format(TextConfig.shop.sellAllItemLore))
                 }
                 item.setLore(lore)
                 gui.setItem(it.slot, item.item) { event ->
@@ -223,8 +224,8 @@ class CustomGUI {
                                 playerData.cash -= (it.shop?.price ?: 0.0) * amount
                             me.past2l.project_g.entity.Player.onChangeData(event.whoClicked as Player)
                             Item.giveItemAmount(event.whoClicked as Player, Item.deserialize(it.item).item, amount)
-                            event.whoClicked.sendMessage(Config.format(
-                                Config.text.shop.item,
+                            event.whoClicked.sendMessage(TextConfig.format(
+                                TextConfig.shop.item,
                                 shopItem = it.shop,
                                 shopInteraction = ShopInteraction(
                                     name = item.item.itemMeta?.displayName ?: "",
@@ -246,8 +247,8 @@ class CustomGUI {
                                 playerData.cash += (it.shop?.sellPrice ?: 0.0) * amount
                             me.past2l.project_g.entity.Player.onChangeData(event.whoClicked as Player)
                             Item.removeItemAmount(event.whoClicked as Player, Item.deserialize(it.item).item, amount)
-                            event.whoClicked.sendMessage(Config.format(
-                                Config.text.shop.item,
+                            event.whoClicked.sendMessage(TextConfig.format(
+                                TextConfig.shop.item,
                                 shopItem = it.shop,
                                 shopInteraction = ShopInteraction(
                                     name = item.item.itemMeta?.displayName ?: "",

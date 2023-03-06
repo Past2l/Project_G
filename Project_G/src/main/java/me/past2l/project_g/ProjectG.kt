@@ -12,6 +12,7 @@ import me.past2l.project_g.scheduler.NPCSkinReloadScheduler
 import me.past2l.project_g.scheduler.StaminaScheduler
 import me.past2l.project_g.command.*
 import me.past2l.project_g.config.Config
+import me.past2l.project_g.config.TextConfig
 import me.past2l.project_g.entity.CustomNPC
 import me.past2l.project_g.gui.CustomGUI
 import org.bukkit.Bukkit
@@ -48,8 +49,8 @@ class ProjectG : JavaPlugin() {
 
     override fun onEnable() {
         PluginManager.init(this)
-        Config.init()
-        Config.save()
+        this.initConfigs()
+        this.saveConfigs()
         if (!NMS.init()) return
         Player.loadData()
         Player.saveData()
@@ -81,6 +82,16 @@ class ProjectG : JavaPlugin() {
         }
         Packet.init()
         events.map { server.pluginManager.registerEvents(it, this) }
+    }
+
+    private fun initConfigs() {
+        Config.init()
+        TextConfig.init()
+    }
+
+    private fun saveConfigs() {
+        Config.save()
+        TextConfig.save()
     }
 
     private fun removeEvents() {
