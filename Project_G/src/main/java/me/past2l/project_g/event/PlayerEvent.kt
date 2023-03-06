@@ -23,7 +23,7 @@ class PlayerEvent: Listener {
         if (Config.resourcePack.isNotEmpty()) {
             val checksum = Web.getFileChecksum(Config.resourcePack)
             if (checksum != null)
-                event.player.setResourcePack(Config.resourcePack)
+                event.player.setResourcePack(Config.resourcePack, checksum)
         }
 
         val data = Player.loadData(event.player)
