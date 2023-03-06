@@ -25,7 +25,7 @@ class PlayerEvent: Listener {
             if (checksum != null)
                 event.player.setResourcePack(Config.resourcePack +
                     if (Config.resourcePack.contains("?")) "&" else "?" +
-                        "time=${ZonedDateTime.now(ZoneId.of(Config.timezone)).toInstant().epochSecond}")
+                        "_resource_pack_checksum=$checksum")
         }
 
         val data = Player.loadData(event.player)
