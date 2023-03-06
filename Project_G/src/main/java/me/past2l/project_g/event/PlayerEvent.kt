@@ -5,6 +5,7 @@ import me.past2l.project_g.config.Config
 import me.past2l.project_g.entity.Player
 import me.past2l.project_g.gui.Scoreboard
 import me.past2l.project_g.gui.TabList
+import me.past2l.project_g.util.File
 import me.past2l.project_g.util.Web
 import org.bukkit.Bukkit
 import org.bukkit.event.EventHandler
@@ -25,7 +26,7 @@ class PlayerEvent: Listener {
             if (checksum != null)
                 event.player.setResourcePack(Config.resourcePack +
                     if (Config.resourcePack.contains("?")) "&" else "?" +
-                        "_resource_pack_checksum=$checksum")
+                        "_resource_pack_checksum=${File.checksumToString(checksum)}")
         }
 
         val data = Player.loadData(event.player)
