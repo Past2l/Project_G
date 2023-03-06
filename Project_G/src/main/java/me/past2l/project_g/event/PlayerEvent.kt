@@ -23,7 +23,9 @@ class PlayerEvent: Listener {
         if (Config.resourcePack.isNotEmpty()) {
             val checksum = Web.getFileChecksum(Config.resourcePack)
             if (checksum != null)
-                event.player.setResourcePack(Config.resourcePack)
+                event.player.setResourcePack(Config.resourcePack +
+                    if (Config.resourcePack.contains("?")) "&" else "?" +
+                        "time=${ZonedDateTime.now(ZoneId.of(Config.timezone)).toInstant().epochSecond}")
         }
 
         val data = Player.loadData(event.player)
