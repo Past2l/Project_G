@@ -393,7 +393,7 @@ class CustomGUICommand: CommandExecutor, TabExecutor {
                                         "§a${args[1]}§r GUI의 " +
                                             (if (args[3] == "all") "§6모든§r" else "§6${args[3].toInt() + 1}§r번째") +
                                             " 아이템의 화폐가 §6" +
-                                            (if (args[5] == "cash") "$(cash)" else "$(money)") +
+                                            (if (args[5] == "cash") "%server.cash%" else "%server.money%") +
                                             "§r(으)로 설정되었습니다."
                                     ))
                                     "gacha" -> sender.sendMessage(
