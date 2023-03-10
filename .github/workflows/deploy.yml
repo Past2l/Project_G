@@ -19,9 +19,6 @@ jobs:
     name: Upload Plugin in Server
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout main branch from GitHub 
-        uses: actions/checkout@v2
-        
       - name: Set up a cache for Maven
         uses: actions/cache@v2
         with:
@@ -36,11 +33,9 @@ jobs:
           
       - name: Download Spigot 1.12.2
         run: |
-          mkdir BuildTools && cd BuildTools
-          curl -z BuildTools.jar -o BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
+          wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
           java -jar BuildTools.jar --rev 1.12.2
-          cd ..
-          rm -rf BuildTools
+          rm -rf *
         
       - name: Set up JDK 1.17
         uses: actions/setup-java@v1
@@ -49,11 +44,12 @@ jobs:
           
       - name: Download Spigot 1.19.2
         run: |
-          mkdir BuildTools && cd BuildTools
-          curl -z BuildTools.jar -o BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
+          wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
           java -jar BuildTools.jar --rev 1.19.2
-          cd ..
-          rm -rf BuildTools
+          rm -rf *
+          
+      - name: Checkout main branch from GitHub 
+        uses: actions/checkout@v2
           
       - name: Have GitHub Actions Build Maven Project
         run: |
