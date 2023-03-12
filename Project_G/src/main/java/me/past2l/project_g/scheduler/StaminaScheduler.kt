@@ -28,7 +28,7 @@ class StaminaScheduler {
                             data.stamina = 0F
                             if (it.location.block.isLiquid && it.health > 0)
                                 it.health = 0.0
-                            else if (it.isFlying && it.equipment.chestplate.type == Material.ELYTRA) {
+                            else if ((it.isFlying || it.isGliding) && it.equipment.chestplate.type == Material.ELYTRA) {
                                 elytra[it] = it.equipment.chestplate
                                 it.equipment.chestplate = ItemStack(Material.AIR)
                             }
