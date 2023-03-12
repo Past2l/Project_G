@@ -14,7 +14,7 @@ class StaminaEvent: Listener {
         if (player.location.block.isLiquid) {
             val from = event.from.toVector()
             val to = event.to.toVector()
-            val distance = to.subtract(from).length() * 2
+            val distance = to.subtract(from).length() * 4
             data.stamina -= distance.toFloat()
         }
     }
