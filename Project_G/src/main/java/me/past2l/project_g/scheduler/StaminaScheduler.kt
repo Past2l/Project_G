@@ -28,14 +28,13 @@ class StaminaScheduler {
 
                         if (data.stamina <= 0) {
                             if (data.stamina < 0) data.stamina = 0F
+                            if (it.equipment.chestplate.type == Material.ELYTRA) {
+                                elytra[it] = it.equipment.chestplate
+                                it.equipment.chestplate = ItemStack(Material.AIR)
+                            }
                             when {
                                 it.location.block.isLiquid && it.health > 0 -> it.health = 0.0
                                 it.isSprinting -> it.addPotionEffect(PotionEffect(PotionEffectType.SLOW, 20, 3))
-                                it.isFlying || it.isGliding ->
-                                    if (it.equipment.chestplate.type == Material.ELYTRA) {
-                                        elytra[it] = it.equipment.chestplate
-                                        it.equipment.chestplate = ItemStack(Material.AIR)
-                                    }
                             }
                         } else if (elytra[it] != null) {
                             it.equipment.chestplate = elytra[it]
