@@ -43,7 +43,7 @@ class StaminaScheduler {
                         }
 
                         if (it.isSprinting) {
-                            if (data.stamina > 0) data.stamina -= 18F / 20
+                            if (data.stamina > 0) data.stamina -= 0.5F
                         } else if (it.isFlying || it.isGliding) {
                             if (data.stamina > 0) data.stamina -= 3F / 20
                         } else if (it.fallDistance <= 0) {
