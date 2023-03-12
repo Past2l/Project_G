@@ -22,7 +22,7 @@ class StaminaEvent: Listener {
     @EventHandler
     fun onSprinting(event: PlayerToggleSprintEvent) {
         val data = Player.data[event.player.uniqueId]!!
-        if (data.stamina <= 0)
+        if (event.player.isSprinting && data.stamina <= 0)
             event.isCancelled = true
     }
 }
