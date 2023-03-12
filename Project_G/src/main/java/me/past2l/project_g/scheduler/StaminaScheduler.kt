@@ -28,7 +28,7 @@ class StaminaScheduler {
 
                         if (data.stamina <= 0) {
                             if (data.stamina < 0) data.stamina = 0F
-                            if (it.equipment.chestplate.type == Material.ELYTRA) {
+                            if (it.equipment.chestplate?.type == Material.ELYTRA) {
                                 elytra[it] = it.equipment.chestplate
                                 it.equipment.chestplate = ItemStack(Material.AIR)
                             }
