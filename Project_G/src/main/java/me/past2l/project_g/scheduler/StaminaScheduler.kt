@@ -32,16 +32,17 @@ class StaminaScheduler {
                                 elytra[it] = it.equipment.chestplate
                                 it.equipment.chestplate = ItemStack(Material.AIR)
                             }
+                        } else {
+                            if (elytra[it] != null) {
+                                it.equipment.chestplate = elytra[it]
+                                elytra.remove(it)
+                            }
                         }
 
-                        if (elytra[it] != null) {
-                            it.equipment.chestplate = elytra[it]
-                            elytra.remove(it)
-                        }
 
                         data.stamina -= when {
-                            it.isSprinting -> 18F / 20
-                            it.isFlying -> 3F / 20
+                            it.isSprinting && data.stamina > 0 -> 18F / 20
+                            it.isFlying && data.stamina > 0 -> 3F / 20
                             it.fallDistance > 0 -> 0F
                             it.isSneaking -> -2F
                             it.velocity.length() == 0.0 -> -3F
@@ -59,7 +60,7 @@ class StaminaScheduler {
                             else -> "§d"
                         }
 
-                        if (Player.data[it.uniqueId]?.stamina!! < maxStamina)
+                        if (data.stamina < maxStamina)
                             it.spigot().sendMessage(
                                 ChatMessageType.ACTION_BAR,
                                 TextComponent("${color}스테미나: " +
