@@ -8,6 +8,8 @@ import net.md_5.bungee.api.chat.TextComponent
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
+import org.bukkit.potion.PotionEffect
+import org.bukkit.potion.PotionEffectType
 import java.text.DecimalFormat
 
 class StaminaScheduler {
@@ -25,12 +27,15 @@ class StaminaScheduler {
                         val data = Player.data[it.uniqueId]!!
 
                         if (data.stamina <= 0) {
-                            data.stamina = 0F
-                            if (it.location.block.isLiquid && it.health > 0)
-                                it.health = 0.0
-                            else if ((it.isFlying || it.isGliding) && it.equipment.chestplate.type == Material.ELYTRA) {
-                                elytra[it] = it.equipment.chestplate
-                                it.equipment.chestplate = ItemStack(Material.AIR)
+                            if (data.stamina < 0) data.stamina = 0F
+                            when {
+                                it.location.block.isLiquid && it.health > 0 -> it.health = 0.0
+                                it.isSprinting -> it.addPotionEffect(PotionEffect(PotionEffectType.SLOW, 20, 2))
+                                it.isFlying || it.isGliding ->
+                                    if (it.equipment.chestplate.type == Material.ELYTRA) {
+                                        elytra[it] = it.equipment.chestplate
+                                        it.equipment.chestplate = ItemStack(Material.AIR)
+                                    }
                             }
                         } else if (elytra[it] != null) {
                             it.equipment.chestplate = elytra[it]
