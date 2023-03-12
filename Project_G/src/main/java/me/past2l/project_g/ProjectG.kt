@@ -35,6 +35,7 @@ class ProjectG : JavaPlugin() {
         PacketEvent(),
         MOTDEvent(),
         UserInfoEvent(),
+        StaminaEvent(),
     )
     private val gameRules = hashMapOf(
         "difficulty" to "normal",
