@@ -37,11 +37,11 @@ class StaminaScheduler {
                             elytra.remove(it)
                         }
 
-                        if (it.isSprinting)
+                        if (it.isSprinting) {
                             if (data.stamina > 0) data.stamina -= 18F / 20
-                        else if (it.isFlying || it.isGliding)
+                        } else if (it.isFlying || it.isGliding) {
                             if (data.stamina > 0) data.stamina -= 3F / 20
-                        else if (it.fallDistance <= 0) {
+                        } else if (it.fallDistance <= 0) {
                             if (it.velocity.length() == 0.0)
                                 data.stamina += 3F
                             else if (it.isSneaking)
