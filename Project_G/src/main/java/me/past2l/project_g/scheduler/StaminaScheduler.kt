@@ -62,7 +62,7 @@ class StaminaScheduler {
                             it.spigot().sendMessage(
                                 ChatMessageType.ACTION_BAR,
                                 TextComponent("${color}스테미나: " +
-                                    "${DecimalFormat("#.#".format(data.stamina))} / ${maxStamina.toInt()}")
+                                    "${DecimalFormat("#.#").format(data.stamina)} / ${maxStamina.toInt()}")
                             )
                     }
                 },
