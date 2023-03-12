@@ -26,25 +26,26 @@ class StaminaScheduler {
 
                         if (data.stamina <= 0) {
                             data.stamina = 0F
-                            if (it.location.block.isLiquid)
+                            if (it.location.block.isLiquid && it.health > 0)
                                 it.health = 0.0
                             else if (it.isFlying && it.equipment.chestplate.type == Material.ELYTRA) {
                                 elytra[it] = it.equipment.chestplate
                                 it.equipment.chestplate = ItemStack(Material.AIR)
                             }
-                        } else {
-                            if (elytra[it] != null) {
-                                it.equipment.chestplate = elytra[it]
-                                elytra.remove(it)
-                            }
-                            data.stamina -= when {
-                                it.isSprinting -> 18F / 20
-                                it.isFlying -> 3F / 20
-                                !it.isOnGround -> 0F
-                                it.isSneaking -> -2F
-                                it.velocity.length() == 0.0 -> -3F
-                                else -> -1F
-                            }
+                        }
+
+                        if (elytra[it] != null) {
+                            it.equipment.chestplate = elytra[it]
+                            elytra.remove(it)
+                        }
+
+                        data.stamina -= when {
+                            it.isSprinting -> 18F / 20
+                            it.isFlying -> 3F / 20
+                            !it.isOnGround -> 0F
+                            it.isSneaking -> -2F
+                            it.velocity.length() == 0.0 -> -3F
+                            else -> -1F
                         }
 
                         if (data.stamina > maxStamina)
