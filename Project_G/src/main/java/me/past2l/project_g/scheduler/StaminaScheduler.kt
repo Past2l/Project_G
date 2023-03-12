@@ -42,7 +42,7 @@ class StaminaScheduler {
                         data.stamina -= when {
                             it.isSprinting -> 18F / 20
                             it.isFlying -> 3F / 20
-                            !it.isOnGround -> 0F
+                            it.fallDistance > 0 -> 0F
                             it.isSneaking -> -2F
                             it.velocity.length() == 0.0 -> -3F
                             else -> -1F
