@@ -30,6 +30,7 @@ class StaminaScheduler {
                             if (data.stamina < 0) data.stamina = 0F
                             when {
                                 it.location.block.isLiquid && it.health > 0 -> it.health = 0.0
+                                it.isSprinting -> it.addPotionEffect(PotionEffect(PotionEffectType.SLOW, 20, 3))
                                 it.isFlying || it.isGliding ->
                                     if (it.equipment.chestplate.type == Material.ELYTRA) {
                                         elytra[it] = it.equipment.chestplate

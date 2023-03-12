@@ -4,7 +4,6 @@ import me.past2l.project_g.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerMoveEvent
-import org.bukkit.event.player.PlayerToggleSprintEvent
 
 class StaminaEvent: Listener {
     @EventHandler
@@ -17,12 +16,5 @@ class StaminaEvent: Listener {
             val distance = to.subtract(from).length() * 4
             data.stamina -= distance.toFloat()
         }
-    }
-
-    @EventHandler
-    fun onSprinting(event: PlayerToggleSprintEvent) {
-        val data = Player.data[event.player.uniqueId]!!
-        if (event.player.isSprinting && data.stamina <= 0)
-            event.isCancelled = true
     }
 }
