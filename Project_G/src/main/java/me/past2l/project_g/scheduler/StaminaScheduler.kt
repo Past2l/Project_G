@@ -6,6 +6,7 @@ import me.past2l.project_g.type.player.PlayerData
 import net.md_5.bungee.api.ChatMessageType
 import net.md_5.bungee.api.chat.TextComponent
 import org.bukkit.Bukkit
+import org.bukkit.GameMode
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.bukkit.potion.PotionEffect
@@ -23,6 +24,9 @@ class StaminaScheduler {
                 PluginManager.plugin,
                 {
                     Bukkit.getOnlinePlayers().forEach {
+                        if (it.gameMode != GameMode.SURVIVAL && it.gameMode != GameMode.ADVENTURE)
+                            return@forEach
+
                         val maxStamina = PlayerData(it.name, it.uniqueId).stamina
                         val data = Player.data[it.uniqueId]!!
 
